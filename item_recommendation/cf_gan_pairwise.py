@@ -21,7 +21,7 @@ cores = multiprocessing.cpu_count() - 1
 EMB_DIM = 16
 USER_NUM = 943
 ITEM_NUM = 1683
-BATCH_SIZE = 16
+BATCH_SIZE = 512
 INIT_DELTA = 0.05
 
 all_items = set(range(ITEM_NUM))
@@ -244,7 +244,6 @@ def main():
                         input_user, input_item_pos, input_item_neg = ut.get_batch_data_pairwise(DIS_TRAIN_FILE, index,
                                                                                 train_size - index + 1)
                     index += BATCH_SIZE
-
                     _ = sess.run(discriminator.d_updates,
                                  feed_dict={discriminator.u: input_user, discriminator.i_pos: input_item_pos,
                                             discriminator.i_neg: input_item_neg })
@@ -292,8 +291,8 @@ def main():
                 print("epoch ", epoch, "gen——train: ", result_train)
                 buf = '\t'.join([str(x) for x in result])
                 buf_train = '\t'.join([str(x) for x in result_train])
-                gen_log.write('test : ', str(epoch) + '\t' + buf + '\n')
-                gen_log.write('train : ', str(epoch) + '\t' + buf_train + '\n')
+                gen_log.write('test : ' + str(epoch) + '\t' + buf + '\n')
+                gen_log.write('train : ' + str(epoch) + '\t' + buf_train + '\n')
                 gen_log.flush()
 
                 p_5 = result[1]
