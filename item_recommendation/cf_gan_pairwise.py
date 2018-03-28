@@ -10,10 +10,10 @@ import copy
 import math
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+os.environ["CUDA_VISIBLE_DEVICES"]= "-1"
 
 
-cores = multiprocessing.cpu_count()
+cores = multiprocessing.cpu_count() - 1
 
 #########################################################################################
 # Hyper-parameters
@@ -106,7 +106,7 @@ def simple_train_one_user(x):
     rating = x[0]
     u = x[1]
 
-    test_items = list(all_items - set(user_pos_test[u]))
+    test_items = list(all_items)
     item_score = []
     for i in test_items:
         item_score.append((i, rating[i]))
@@ -245,26 +245,9 @@ def main():
                                                                                 train_size - index + 1)
                     index += BATCH_SIZE
 
-                    #delta NDCG
-                    delta_ndcg_list = []
-                    for i in range(len(input_user)):
-                        rating = sess.run(generator.all_logits,{generator.u: input_user[i]})
-                        rating = list(rating)
-                        ratings_r = copy.deepcopy(rating)
-                        ratings_r.sort(reverse=True)
-                        rank_pos = ratings_r.index(rating[input_item_pos[i]]) + 1
-                        rank_neg = ratings_r.index(rating[input_item_neg[i]]) + 1
-                        pos_len = len(user_pos_train[input_user[i]])  #num of pos_item for u
-                        idcg = 0
-                        for j in range(pos_len):
-                            idcg = idcg +  1/math.log(j + 2, 2)
-                        delta_dcg = abs((1/math.log(rank_pos + 1,2)) - (1/math.log(rank_neg + 1,2)))
-                        delta_ndcg = delta_dcg/idcg
-                        delta_ndcg_list.append(delta_ndcg)
-
                     _ = sess.run(discriminator.d_updates,
                                  feed_dict={discriminator.u: input_user, discriminator.i_pos: input_item_pos,
-                                            discriminator.i_neg: input_item_neg, discriminator.delta_ndcg: delta_ndcg_list})
+                                            discriminator.i_neg: input_item_neg })
 
             # Train G
             for g_epoch in range(50):  # 50
@@ -306,7 +289,7 @@ def main():
                 result = simple_test(sess, generator)
                 result_train = simple_train(sess, generator)
                 print("epoch ", epoch, "gen——test: ", result)
-                print("epoch ", epoch, "gen——train: ", result)
+                print("epoch ", epoch, "gen——train: ", result_train)
                 buf = '\t'.join([str(x) for x in result])
                 buf_train = '\t'.join([str(x) for x in result_train])
                 gen_log.write('test : ', str(epoch) + '\t' + buf + '\n')
@@ -316,7 +299,7 @@ def main():
                 p_5 = result[1]
                 if p_5 > best:
                     print('best: ', result)
-                    gen_log.write('best: ', str(epoch) + '\t' + buf + '\n')
+                    gen_log.write('best: ' + str(epoch) + '\t' + buf + '\n')
                     gen_log.flush()
                     best = p_5
                     generator.save_model(sess, "ml-100k/gan_generator.pkl")

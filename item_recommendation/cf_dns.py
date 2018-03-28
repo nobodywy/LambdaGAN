@@ -7,7 +7,7 @@ import os
 
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-cores = multiprocessing.cpu_count()
+cores = multiprocessing.cpu_count() - 1
 
 #########################################################################################
 # Hyper-parameters
@@ -119,7 +119,7 @@ def simple_train_one_user(x):
     rating = x[0]
     u = x[1]
 
-    test_items = list(all_items - set(user_pos_test[u]))
+    test_items = list(all_items)
     item_score = []
     for i in test_items:
         item_score.append((i, rating[i]))
@@ -241,8 +241,8 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
 
         result = simple_test(sess, discriminator)
         result_train = simple_train(sess,discriminator)
-        print ("epoch for test: ", epoch, "dis: ", result)
-        print ("epoch for train: ", epoch, "dis: ", result_train)
+        print ("epoch for test: " +  str(epoch), "dis: ", result)
+        print ("epoch for train: " +  str(epoch), "dis: ", result_train)
         if result[1] > best_p5:
             best_p5 = result[1]
             discriminator.save_model(sess, DIS_MODEL_FILE)

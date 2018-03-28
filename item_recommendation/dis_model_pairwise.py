@@ -35,7 +35,6 @@ class DIS():
         self.u = tf.placeholder(tf.int32)
         self.i_pos = tf.placeholder(tf.int32)
         self.i_neg = tf.placeholder(tf.int32)
-        self.delta_ndcg = tf.placeholder(tf.float32)
         #self.label = tf.placeholder(tf.float32)
 
         self.u_embedding = tf.nn.embedding_lookup(self.user_embeddings, self.u)
@@ -48,16 +47,16 @@ class DIS():
         self.pre_logits_neg = tf.reduce_sum(tf.multiply(self.u_embedding, self.i_embedding_neg), 1) + self.i_bias_neg
 
         with tf.name_scope('log_loss'):
-            self.loss = -tf.reduce_mean(self.delta_ndcg * tf.log(tf.sigmoid(self.pre_logits_pos - self.pre_logits_neg))) \
+            self.loss = -tf.reduce_mean(tf.log(tf.sigmoid(self.pre_logits_pos - self.pre_logits_neg))) \
                         + self.lamda * (tf.nn.l2_loss(self.u_embedding) + tf.nn.l2_loss(self.i_embedding_pos) + tf.nn.l2_loss(self.i_embedding_neg)
                                         + tf.nn.l2_loss(self.i_bias_neg) + tf.nn.l2_loss(self.i_bias_pos))
             # For generator
-            self.reward = tf.reshape(self.delta_ndcg * tf.log(tf.sigmoid(self.pre_logits_neg - self.pre_logits_pos)), [-1])
+            self.reward = tf.reshape(tf.log(tf.sigmoid(self.pre_logits_neg - self.pre_logits_pos)), [-1])
 
 
         d_opt = tf.train.GradientDescentOptimizer(self.learning_rate)
 
-        self.d_updates = d_opt.minimize(self.loss, var_list=self.d_params)    #lambda here to pairwise
+        self.d_updates = d_opt.minimize(self.loss, var_list=self.d_params)
 
 
         # for test stage, self.u: [batch_size]

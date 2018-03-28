@@ -4,6 +4,8 @@ import pickle
 import numpy as np
 import multiprocessing
 import os
+import copy
+import math
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
@@ -74,29 +76,6 @@ def generate_dns(sess, model, filename): #判别器动态生成负样本 id
     with open(filename, 'w')as fout:
         fout.write('\n'.join(data))
 
-def generate_for_d(sess, model, filename):  # pairwise对 
-    data = []
-    for u in user_pos_train:
-        pos = user_pos_train[u]
-        pos_set = set(pos)
-
-        rating = sess.run(model.all_rating, {model.u: [u]})
-        rating = np.array(rating[0]) / 0.2  # Temperature
-        exp_rating = np.exp(rating)
-        prob = exp_rating / np.sum(exp_rating)
-
-        neg_list = []
-        for i in range(len(pos)):
-            while True:
-                neg = np.random.choice(np.arange(ITEM_NUM), p=prob)
-                if neg not in pos_set:
-                    neg_list.append(neg)
-                    break
-        for i in range(len(pos)):
-            data.append(str(u) + '\t' + str(pos[i]) + '\t' + str(neg_list[i]))
-
-    with open(filename, 'w')as fout:
-        fout.write('\n'.join(data))
 
 def dcg_at_k(r, k):
     r = np.asfarray(r)[:k]
@@ -232,46 +211,19 @@ def generate_uniform(filename):
             data.append(str(u) + '\t' + str(pos[i]) + '\t' + str(neg[i]))
 
     with open(filename, 'w')as fout:
-        fout.write('\n'.join(data)
-
-        def generate_for_d(sess, model, filename):  # pairwise对 
-            data = []
-            for u in user_pos_train:
-                pos = user_pos_train[u]
-                pos_set = set(pos)
-
-                rating = sess.run(model.all_rating, {model.u: [u]})
-                rating = np.array(rating[0]) / 0.2  # Temperature
-                exp_rating = np.exp(rating)
-                prob = exp_rating / np.sum(exp_rating)
-
-                neg_list = []
-                for i in range(len(pos)):
-                    while True:
-                        neg = np.random.choice(np.arange(ITEM_NUM), p=prob)
-                        if neg not in pos_set:
-                            neg_list.append(neg)
-                            break
-                for i in range(len(pos)):
-                    data.append(str(u) + '\t' + str(pos[i]) + '\t' + str(neg_list[i]))
-
-            with open(filename, 'w')as fout:
-                fout.write('\n'.join(data))
-
-
-
+        fout.write('\n'.join(data))
 
 def main():  #首先初始化dis_dns判别器，使用判别器生成负样本作为判别器训练数据，以此更新dis_dns判别器;目的是预训练得到三个参数，bias，u v矩阵。
     np.random.seed(70)
     param = None
-    discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1, param=param, initdelta=0.05, learning_rate=0.05)
+    discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1, param=param, initdelta=0.05, learning_rate=0.1)
 
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
     sess = tf.Session(config=config)
     sess.run(tf.global_variables_initializer())
 
-    dis_log = open(workdir + 'dis_log_dns.txt', 'w')
+    dis_log = open(workdir + 'dis_log_dns_lambdaRank.txt', 'w')
     print ("dis ", simple_test(sess, discriminator))
     best_p5 = 0.
 
@@ -285,9 +237,26 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
                 u = int(line[0])
                 i = int(line[1])
                 j = int(line[2])
+
+                # delta NDCG
+                rating = sess.run(discriminator.all_logits, {discriminator.u: u})
+                rating = list(rating)
+                ratings_r = copy.deepcopy(rating)
+                ratings_r.sort(reverse=True)
+                rank_pos = ratings_r.index(rating[i]) + 1
+                rank_neg = ratings_r.index(rating[j]) + 1
+                pos_len = len(user_pos_train[u])  # num of pos_item for u
+                idcg = 0
+                for j in range(pos_len):
+                    idcg = idcg + 1 / math.log(j + 2, 2)
+                delta_dcg = abs((1 / math.log(rank_pos + 1, 2)) - (1 / math.log(rank_neg + 1, 2)))
+                delta_ndcg = delta_dcg / idcg
+                ndcg_rate = 64
+
                 _ = sess.run(discriminator.d_updates,
                              feed_dict={discriminator.u: [u], discriminator.pos: [i],
-                                        discriminator.neg: [j]})
+                                        discriminator.neg: [j], discriminator.delta_ndcg: [delta_ndcg * ndcg_rate]})
+                #print('ndcg: ',str(delta_ndcg * ndcg_rate),' ,uid: ', str(u))
 
         result = simple_test(sess, discriminator)
         result_train = simple_train(sess, discriminator)

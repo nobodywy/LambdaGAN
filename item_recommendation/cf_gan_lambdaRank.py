@@ -13,7 +13,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 
-cores = multiprocessing.cpu_count()
+cores = multiprocessing.cpu_count() - 1
 
 #########################################################################################
 # Hyper-parameters
@@ -105,8 +105,7 @@ def simple_test_one_user(x):
 def simple_train_one_user(x):
     rating = x[0]
     u = x[1]
-
-    test_items = list(all_items - set(user_pos_test[u]))
+    test_items = list(all_items)
     item_score = []
     for i in test_items:
         item_score.append((i, rating[i]))
@@ -230,7 +229,7 @@ def main():
     best = 0.
     for epoch in range(200):
         if epoch >= 0:
-            for d_epoch in range(1):
+            for d_epoch in range(100):
                 if d_epoch % 5 == 0:
                     generate_for_d(sess, generator, DIS_TRAIN_FILE)
                     train_size = ut.file_len(DIS_TRAIN_FILE)
@@ -325,17 +324,17 @@ def main():
                 result = simple_test(sess, generator)
                 result_train = simple_train(sess, generator)
                 print("epoch ", epoch, "gen——test: ", result)
-                print("epoch ", epoch, "gen——train: ", result)
+                print("epoch ", epoch, "gen——train: ", result_train)
                 buf = '\t'.join([str(x) for x in result])
                 buf_train = '\t'.join([str(x) for x in result_train])
-                gen_log.write('test : ', str(epoch) + '\t' + buf + '\n')
-                gen_log.write('train : ', str(epoch) + '\t' + buf_train + '\n')
+                gen_log.write('test : ' + str(epoch) + '\t' + buf + '\n')
+                gen_log.write('train : ' + str(epoch) + '\t' + buf_train + '\n')
                 gen_log.flush()
 
                 p_5 = result[1]
                 if p_5 > best:
                     print('best: ', result)
-                    gen_log.write('best: ', str(epoch) + '\t' + buf + '\n')
+                    gen_log.write('best: ' + str(epoch) + '\t' + buf + '\n')
                     gen_log.flush()
                     best = p_5
                     generator.save_model(sess, "ml-100k/gan_generator.pkl")

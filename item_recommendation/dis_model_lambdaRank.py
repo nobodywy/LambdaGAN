@@ -13,8 +13,10 @@ class DIS():
         self.learning_rate = learning_rate
         self.d_params = []
 
+
+
         with tf.variable_scope('discriminator'):
-            if self.param is None:
+            if self.param == None:
                 self.user_embeddings = tf.Variable(
                     tf.random_uniform([self.userNum, self.emb_dim], minval=-self.initdelta, maxval=self.initdelta,
                                       dtype=tf.float32))
@@ -31,35 +33,44 @@ class DIS():
 
         # placeholder definition
         self.u = tf.placeholder(tf.int32)
-        self.pos = tf.placeholder(tf.int32)
-        self.neg = tf.placeholder(tf.int32)
+        self.i_pos = tf.placeholder(tf.int32)
+        self.i_neg = tf.placeholder(tf.int32)
         self.delta_ndcg = tf.placeholder(tf.float32)
+        #self.label = tf.placeholder(tf.float32)
 
         self.u_embedding = tf.nn.embedding_lookup(self.user_embeddings, self.u)
-        self.pos_embedding = tf.nn.embedding_lookup(self.item_embeddings, self.pos)
-        self.pos_bias = tf.gather(self.item_bias, self.pos)
-        self.neg_embedding = tf.nn.embedding_lookup(self.item_embeddings, self.neg)
-        self.neg_bias = tf.gather(self.item_bias, self.neg)
+        self.i_embedding_pos = tf.nn.embedding_lookup(self.item_embeddings, self.i_pos)
+        self.i_embedding_neg = tf.nn.embedding_lookup(self.item_embeddings, self.i_neg)
+        self.i_bias_pos = tf.gather(self.item_bias, self.i_pos)
+        self.i_bias_neg = tf.gather(self.item_bias,self.i_neg)
 
-        self.pre_logits = tf.sigmoid(
-            tf.reduce_sum(tf.multiply(self.u_embedding, self.pos_embedding - self.neg_embedding),
-                          1) + self.pos_bias - self.neg_bias)
-        self.pre_loss = -tf.reduce_mean(self.delta_ndcg * tf.log(self.pre_logits)) + self.lamda * (
-            tf.nn.l2_loss(self.u_embedding) +
-            tf.nn.l2_loss(self.pos_embedding) +
-            tf.nn.l2_loss(self.pos_bias) +
-            tf.nn.l2_loss(self.neg_embedding) +
-            tf.nn.l2_loss(self.neg_bias)
-        )
+        self.pre_logits_pos = tf.reduce_sum(tf.multiply(self.u_embedding, self.i_embedding_pos), 1) + self.i_bias_pos
+        self.pre_logits_neg = tf.reduce_sum(tf.multiply(self.u_embedding, self.i_embedding_neg), 1) + self.i_bias_neg
+
+        with tf.name_scope('log_loss'):
+            self.loss = -tf.reduce_mean(self.delta_ndcg * tf.log(tf.sigmoid(self.pre_logits_pos - self.pre_logits_neg))) \
+                        + self.lamda * (tf.nn.l2_loss(self.u_embedding) + tf.nn.l2_loss(self.i_embedding_pos) + tf.nn.l2_loss(self.i_embedding_neg)
+                                        + tf.nn.l2_loss(self.i_bias_neg) + tf.nn.l2_loss(self.i_bias_pos))
+            # For generator
+            self.reward = tf.reshape(self.delta_ndcg * tf.log(tf.sigmoid(self.pre_logits_neg - self.pre_logits_pos)), [-1])
+
 
         d_opt = tf.train.GradientDescentOptimizer(self.learning_rate)
-        self.d_updates = d_opt.minimize(self.pre_loss, var_list=self.d_params)
+
+        self.d_updates = d_opt.minimize(self.loss, var_list=self.d_params)    #lambda here to pairwise
+
 
         # for test stage, self.u: [batch_size]
         self.all_rating = tf.matmul(self.u_embedding, self.item_embeddings, transpose_a=False,
                                     transpose_b=True) + self.item_bias
 
         self.all_logits = tf.reduce_sum(tf.multiply(self.u_embedding, self.item_embeddings), 1) + self.item_bias
+        '''
+        self.NLL = -tf.reduce_mean(tf.log(
+            tf.gather(tf.reshape(tf.nn.softmax(tf.reshape(self.all_logits, [1, -1])), [-1]), self.i))
+        )
+        '''
+
         # for dns sample
         self.dns_rating = tf.reduce_sum(tf.multiply(self.u_embedding, self.item_embeddings), 1) + self.item_bias
 
