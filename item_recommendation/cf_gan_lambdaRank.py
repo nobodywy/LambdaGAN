@@ -21,7 +21,7 @@ cores = multiprocessing.cpu_count() - 1
 EMB_DIM = 16
 USER_NUM = 943
 ITEM_NUM = 1683
-BATCH_SIZE = 16
+BATCH_SIZE = 32
 INIT_DELTA = 0.05
 
 all_items = set(range(ITEM_NUM))
@@ -246,8 +246,15 @@ def main():
 
                     #delta NDCG
                     delta_ndcg_list = []
+                    former_user_id = -1
+                    former_user_rating = []
                     for i in range(len(input_user)):
-                        rating = sess.run(generator.all_logits,{generator.u: input_user[i]})
+                        if (input_user[i] != former_user_id):
+                            rating = sess.run(discriminator.all_logits, {discriminator.u: input_user[i]})
+                            former_user_id = input_user[i]
+                            former_user_rating = rating
+                        else:
+                            rating = former_user_rating
                         rating = list(rating)
                         ratings_r = copy.deepcopy(rating)
                         ratings_r.sort(reverse=True)

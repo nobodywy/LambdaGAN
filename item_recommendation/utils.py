@@ -26,6 +26,8 @@ def get_batch_data(file, index, size):  # 1,5->1,2,3,4,5
         label.append(0.)
     return user, item, label
 
+
+
 # Get batch data from training set
 def get_batch_data_pairwise(file, index, size):
     user = []
