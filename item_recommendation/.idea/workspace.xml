@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7555a30a-04ab-43be-a193-73dfe7a4a6ee" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dis_model_lambdaRank.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ml-100k/dis_log_dns_lambdaRank.txt" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cf_dns.py" afterPath="$PROJECT_DIR$/cf_dns.py" />
-      <change beforePath="$PROJECT_DIR$/cf_dns_lambdaRank.py" afterPath="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
-      <change beforePath="$PROJECT_DIR$/cf_gan.py" afterPath="$PROJECT_DIR$/cf_gan.py" />
-      <change beforePath="$PROJECT_DIR$/cf_gan_lambdaRank.py" afterPath="$PROJECT_DIR$/cf_gan_lambdaRank.py" />
-      <change beforePath="$PROJECT_DIR$/cf_gan_pairwise.py" afterPath="$PROJECT_DIR$/cf_gan_pairwise.py" />
-      <change beforePath="$PROJECT_DIR$/dis_model_dns_lambdaRank.py" afterPath="$PROJECT_DIR$/dis_model_dns_lambdaRank.py" />
-      <change beforePath="$PROJECT_DIR$/dis_model_pairwise.py" afterPath="$PROJECT_DIR$/dis_model_pairwise.py" />
-      <change beforePath="$PROJECT_DIR$/ml-100k/dis-train.txt" afterPath="$PROJECT_DIR$/ml-100k/dis-train.txt" />
-      <change beforePath="$PROJECT_DIR$/ml-100k/gan_generator.pkl" afterPath="$PROJECT_DIR$/ml-100k/gan_generator.pkl" />
-      <change beforePath="$PROJECT_DIR$/ml-100k/gen_log.txt" afterPath="$PROJECT_DIR$/ml-100k/gen_log.txt" />
-      <change beforePath="$PROJECT_DIR$/ml-100k/model_dns.pkl" afterPath="$PROJECT_DIR$/ml-100k/model_dns.pkl" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -408,6 +394,14 @@
       <option name="presentableId" value="Default" />
       <updated>1520498818301</updated>
     </task>
+    <task id="LOCAL-00001" summary="add cf_dns_lambdarank">
+      <created>1522246688659</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1522246688659</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -438,8 +432,38 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add cf_dns_lambdarank" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cf_dns_lambdarank" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
