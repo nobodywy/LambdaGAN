@@ -4,8 +4,6 @@
     <list default="true" id="7555a30a-04ab-43be-a193-73dfe7a4a6ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/cf_dns_lambdaRank.py" afterPath="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
-      <change beforePath="$PROJECT_DIR$/cf_gan_pairwise.py" afterPath="$PROJECT_DIR$/cf_gan_pairwise.py" />
-      <change beforePath="$PROJECT_DIR$/dis_model_dns_lambdaRank.py" afterPath="$PROJECT_DIR$/dis_model_dns_lambdaRank.py" />
       <change beforePath="$PROJECT_DIR$/ml-100k/dis-train.txt" afterPath="$PROJECT_DIR$/ml-100k/dis-train.txt" />
       <change beforePath="$PROJECT_DIR$/ml-100k/model_dns.pkl" afterPath="$PROJECT_DIR$/ml-100k/model_dns.pkl" />
     </list>
@@ -22,22 +20,39 @@
     <SUITE FILE_PATH="coverage/item_recommendation$cf_gan_lambdaRank.coverage" NAME="cf_gan_lambdaRank Coverage Results" MODIFIED="1522143771278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_dns.coverage" NAME="cf_dns Coverage Results" MODIFIED="1522242462454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_gan_pairwise.coverage" NAME="cf_gan_pairwise Coverage Results" MODIFIED="1522562120053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank.coverage" NAME="cf_dns_lambdaRank Coverage Results" MODIFIED="1522595640727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank.coverage" NAME="cf_dns_lambdaRank Coverage Results" MODIFIED="1522598478611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="272" column="41" lean-forward="false" selection-start-line="272" selection-start-column="41" selection-end-line="272" selection-end-column="41" />
+            <state relative-caret-position="191">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
-                <element signature="e#2517#2596#0" expanded="false" />
-                <element signature="e#2624#2744#0" expanded="false" />
-                <element signature="e#2780#3430#0" expanded="false" />
-                <element signature="e#3466#4102#0" expanded="false" />
-                <element signature="e#4138#4888#0" expanded="false" />
+                <element signature="e#2516#2595#0" expanded="false" />
+                <element signature="e#2623#2743#0" expanded="false" />
+                <element signature="e#2779#3429#0" expanded="false" />
+                <element signature="e#3465#4101#0" expanded="false" />
+                <element signature="e#4137#4887#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cf_dns_lambdaRank_2.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3553">
+              <caret line="280" column="103" lean-forward="false" selection-start-line="280" selection-start-column="103" selection-end-line="280" selection-end-column="103" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#2516#2595#0" expanded="false" />
+                <element signature="e#2623#2743#0" expanded="false" />
+                <element signature="e#2779#3429#0" expanded="false" />
+                <element signature="e#3465#4101#0" expanded="false" />
+                <element signature="e#4137#4887#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -92,6 +107,7 @@
       <find>all_items</find>
       <find>sess</find>
       <find>cores</find>
+      <find>TI</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,8 +131,9 @@
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/cf_gan_lambdaRank.py" />
         <option value="$PROJECT_DIR$/cf_gan_pairwise.py" />
-        <option value="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
         <option value="$PROJECT_DIR$/dis_model_dns_lambdaRank.py" />
+        <option value="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
+        <option value="$PROJECT_DIR$/cf_dns_lambdaRank_2.py" />
       </list>
     </option>
   </component>
@@ -156,11 +173,6 @@
             <path>
               <item name="item_recommendation" type="b2602c69:ProjectViewProjectNode" />
               <item name="item_recommendation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="item_recommendation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="item_recommendation" type="462c0819:PsiDirectoryNode" />
-              <item name="ml-100k" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -357,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522254349993</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="edit some batchsize  fix write() error">
+      <created>1522596263003</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1522596263003</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -459,16 +478,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cf_dns.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -865,15 +874,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="272" column="41" lean-forward="false" selection-start-line="272" selection-start-column="41" selection-end-line="272" selection-end-column="41" />
+        <state relative-caret-position="191">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-            <element signature="e#2517#2596#0" expanded="false" />
-            <element signature="e#2624#2744#0" expanded="false" />
-            <element signature="e#2780#3430#0" expanded="false" />
-            <element signature="e#3466#4102#0" expanded="false" />
-            <element signature="e#4138#4888#0" expanded="false" />
+            <element signature="e#2516#2595#0" expanded="false" />
+            <element signature="e#2623#2743#0" expanded="false" />
+            <element signature="e#2779#3429#0" expanded="false" />
+            <element signature="e#3465#4101#0" expanded="false" />
+            <element signature="e#4137#4887#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3553">
+          <caret line="280" column="103" lean-forward="false" selection-start-line="280" selection-start-column="103" selection-end-line="280" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#2516#2595#0" expanded="false" />
+            <element signature="e#2623#2743#0" expanded="false" />
+            <element signature="e#2779#3429#0" expanded="false" />
+            <element signature="e#3465#4101#0" expanded="false" />
+            <element signature="e#4137#4887#0" expanded="false" />
           </folding>
         </state>
       </provider>
