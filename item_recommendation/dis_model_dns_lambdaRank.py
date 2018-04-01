@@ -44,7 +44,7 @@ class DIS():
         self.pre_logits = tf.sigmoid(
             tf.reduce_sum(tf.multiply(self.u_embedding, self.pos_embedding - self.neg_embedding),
                           1) + self.pos_bias - self.neg_bias)
-        self.pre_loss = -tf.reduce_mean(self.delta_ndcg * tf.log(self.pre_logits)) + self.lamda * (
+        self.pre_loss = -tf.reduce_mean(tf.multiply(self.delta_ndcg, tf.log(self.pre_logits))) + self.lamda * (
             tf.nn.l2_loss(self.u_embedding) +
             tf.nn.l2_loss(self.pos_embedding) +
             tf.nn.l2_loss(self.pos_bias) +

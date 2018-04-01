@@ -20,7 +20,7 @@ EMB_DIM = 16
 USER_NUM = 943
 ITEM_NUM = 1683
 DNS_K = 5
-BATCH_SIZE = 32
+BATCH_SIZE = 512
 all_items = set(range(ITEM_NUM))
 workdir = 'ml-100k/'
 DIS_TRAIN_FILE = workdir + 'dis-train.txt'
@@ -35,7 +35,7 @@ with open(workdir + 'movielens-100k-train.txt')as fin:
         uid = int(line[0])
         iid = int(line[1])
         r = float(line[2])
-        if r > 3.99:
+        if r > 0.1: #0 or 3.99
             if uid in user_pos_train:
                 user_pos_train[uid].append(iid)
             else:
@@ -220,9 +220,9 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
     param = None
     discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1, param=param, initdelta=0.05, learning_rate=0.1)
 
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth = True
-    sess = tf.Session(config=config)
+    #config = tf.ConfigProto()
+    #config.gpu_options.allow_growth = True
+    sess = tf.Session()
     sess.run(tf.global_variables_initializer())
 
     dis_log = open(workdir + 'dis_log_dns_lambdaRank.txt', 'w')
@@ -249,7 +249,7 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
 
             # delta NDCG
             delta_ndcg_list = []
-            ndcg_rate = 50
+            ndcg_rate = 1
             former_user_id = -1
             former_user_rating = []
             for i in range(len(input_user)):

@@ -215,8 +215,10 @@ def main():
     discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1 / BATCH_SIZE, param=None, initdelta=INIT_DELTA,
                         learning_rate=0.001)
 
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth = True
+    config = tf.ConfigProto(device_count={"CPU": 6},  # limit to num_cpu_core CPU usage
+                            inter_op_parallelism_threads=1,
+                            intra_op_parallelism_threads=8,
+                            log_device_placement=True)
     sess = tf.Session(config=config)
     sess.run(tf.global_variables_initializer())
 
@@ -224,7 +226,7 @@ def main():
     print ("dis ", simple_test(sess, discriminator))
 
     dis_log = open(workdir + 'dis_pairwise_log.txt', 'w')
-    gen_log = open(workdir + 'gen__pairwise_log.txt', 'w')
+    gen_log = open(workdir + 'gen_pairwise_log.txt', 'w')
 
     # minimax training
     best = 0.
