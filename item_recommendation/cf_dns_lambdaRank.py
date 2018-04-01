@@ -225,7 +225,7 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
     sess = tf.Session()
     sess.run(tf.global_variables_initializer())
 
-    dis_log = open(workdir + 'dis_log_dns_lambdaRank.txt', 'w')
+    dis_log = open(workdir + 'dis_log_dns_lambdaRank_2.txt', 'w')
     print ("dis ", simple_test(sess, discriminator))
     best_p5 = 0.
 
