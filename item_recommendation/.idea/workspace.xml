@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7555a30a-04ab-43be-a193-73dfe7a4a6ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/ml-100k/dis-train.txt" afterPath="$PROJECT_DIR$/ml-100k/dis-train.txt" />
+      <change beforePath="$PROJECT_DIR$/ml-100k/dis_log_dns_lambdaRank.txt" afterPath="$PROJECT_DIR$/ml-100k/dis_log_dns_lambdaRank.txt" />
+      <change beforePath="$PROJECT_DIR$/ml-100k/model_dns.pkl" afterPath="$PROJECT_DIR$/ml-100k/model_dns.pkl" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="91" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+            <state relative-caret-position="304">
+              <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
                 <element signature="e#2516#2595#0" expanded="false" />
@@ -38,10 +41,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cf_dns_lambdaRank_2.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cf_dns_lambdaRank_2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3553">
+            <state relative-caret-position="3743">
               <caret line="280" column="103" lean-forward="false" selection-start-line="280" selection-start-column="103" selection-end-line="280" selection-end-column="103" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -380,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522599714180</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add lambdaFM-w TI">
+      <created>1522599739272</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1522599739272</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -453,7 +463,8 @@
     <MESSAGE value="add cf_dns_lambdarank" />
     <MESSAGE value="optimize the batch size for lambdarank" />
     <MESSAGE value="edit some batchsize  fix write() error" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit some batchsize  fix write() error" />
+    <MESSAGE value="add lambdaFM-w TI" />
+    <option name="LAST_COMMIT_MESSAGE" value="add lambdaFM-w TI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -876,10 +887,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
+    <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+        <state relative-caret-position="3743">
+          <caret line="280" column="103" lean-forward="false" selection-start-line="280" selection-start-column="103" selection-end-line="280" selection-end-column="103" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <element signature="e#2516#2595#0" expanded="false" />
@@ -891,10 +902,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_2.py">
+    <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3553">
-          <caret line="280" column="103" lean-forward="false" selection-start-line="280" selection-start-column="103" selection-end-line="280" selection-end-column="103" />
+        <state relative-caret-position="304">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <element signature="e#2516#2595#0" expanded="false" />
