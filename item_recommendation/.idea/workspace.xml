@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7555a30a-04ab-43be-a193-73dfe7a4a6ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cf_dns_lambdaRank.py" afterPath="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +24,8 @@
       <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="231" column="75" lean-forward="true" selection-start-line="231" selection-start-column="75" selection-end-line="231" selection-end-column="75" />
+            <state relative-caret-position="570">
+              <caret line="243" column="11" lean-forward="false" selection-start-line="243" selection-start-column="11" selection-end-line="243" selection-end-column="11" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
                 <element signature="e#2516#2595#0" expanded="false" />
@@ -395,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522600038137</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add lambdaFM-w TI">
+      <created>1522600155828</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1522600155828</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -910,8 +916,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="231" column="75" lean-forward="true" selection-start-line="231" selection-start-column="75" selection-end-line="231" selection-end-column="75" />
+        <state relative-caret-position="570">
+          <caret line="243" column="11" lean-forward="false" selection-start-line="243" selection-start-column="11" selection-end-line="243" selection-end-column="11" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <element signature="e#2516#2595#0" expanded="false" />
