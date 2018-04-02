@@ -231,7 +231,7 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
     for i in range(USER_NUM):
         pos_len = len(user_pos_train[i])
         for j in range(pos_len):
-            idcg += 1 / math.log(j + 2, 2)
+            idcg += (1 / math.log(j + 2, 2))
         IDCG.append(idcg)
     ####
 
@@ -260,7 +260,7 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
                 rank_pos = int(o[i])
                 rank_neg = int(o[j])
                 delta_ndcg = abs(DCG[rank_pos-1] - DCG[rank_neg-1]) / IDCG[u]
-                delta_ndcg = math.exp(delta_ndcg)
+                delta_ndcg = pow(1.5,delta_ndcg)
 
                 _ = sess.run(discriminator.d_updates,
                              feed_dict={discriminator.u: [u], discriminator.pos: [i],
