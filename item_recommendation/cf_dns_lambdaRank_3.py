@@ -4,13 +4,10 @@ import pickle
 import numpy as np
 import multiprocessing
 import os
-import copy
-import utils as ut
-import math
+import pandas as pd
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 cores = multiprocessing.cpu_count() - 1
 
 #########################################################################################
@@ -20,7 +17,6 @@ EMB_DIM = 16
 USER_NUM = 943
 ITEM_NUM = 1683
 DNS_K = 5
-BATCH_SIZE = 64
 all_items = set(range(ITEM_NUM))
 workdir = 'ml-100k/'
 DIS_TRAIN_FILE = workdir + 'dis-train.txt'
@@ -35,7 +31,7 @@ with open(workdir + 'movielens-100k-train.txt')as fin:
         uid = int(line[0])
         iid = int(line[1])
         r = float(line[2])
-        if r > 0.1: #0 or 3.99
+        if r > 3.99:
             if uid in user_pos_train:
                 user_pos_train[uid].append(iid)
             else:
@@ -215,79 +211,65 @@ def generate_uniform(filename):
     with open(filename, 'w')as fout:
         fout.write('\n'.join(data))
 
+
 def main():  #首先初始化dis_dns判别器，使用判别器生成负样本作为判别器训练数据，以此更新dis_dns判别器;目的是预训练得到三个参数，bias，u v矩阵。
     np.random.seed(70)
-    param = None
-    discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1, param=param, initdelta=0.05, learning_rate=0.1)
+    #param = None
+    param = pickle.load(open(workdir + "model_dns.pkl",'rb'),encoding='bytes')
+    discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1, param=param, initdelta=0.05, learning_rate=0.05)
 
-
-    ### compute TI
-    TI = 0
-    for i in range(ITEM_NUM):
-        TI += 1/(i+1)
-    ####
-
-    #config = tf.ConfigProto()
-    #config.gpu_options.allow_growth = True
-    sess = tf.Session()
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    sess = tf.Session(config=config)
     sess.run(tf.global_variables_initializer())
 
-    dis_log = open(workdir + 'dis_log_dns_lambdaRank.txt', 'w')
+    dis_log = open(workdir + 'dis_log_dns_lambdaRank_3.txt', 'w')
     print ("dis ", simple_test(sess, discriminator))
     best_p5 = 0.
 
+    TI = []
+    ti = 0
+    for i in range(ITEM_NUM):
+        ti += 1/(i+1)
+        TI.append(ti)
     # generate_uniform(DIS_TRAIN_FILE) # Uniformly sample negative examples
 
-    for epoch in range(80):
+    for epoch in range(120):
         generate_dns(sess, discriminator, DIS_TRAIN_FILE)  # dynamic negative sample  生成判别器的训练样本
-        index = 1
-        train_size = ut.file_len(DIS_TRAIN_FILE)
-
-        while True:
-            if index > train_size:
-                break
-            if index + BATCH_SIZE <= train_size + 1:
-                input_user, input_item_pos, input_item_neg = ut.get_batch_data_pairwise(DIS_TRAIN_FILE, index,
-                                                                                        BATCH_SIZE)
-            else:
-                input_user, input_item_pos, input_item_neg = ut.get_batch_data_pairwise(DIS_TRAIN_FILE, index,
-                                                                                        train_size - index + 1)
-            index += BATCH_SIZE
-
-            # delta NDCG this ndcg from lambdaFM-W
-            delta_ndcg_list = []
-            ndcg_rate = 1
-            former_user_id = -1
-            former_user_rating = []
-            for i in range(len(input_user)):
-                if(input_user[i] != former_user_id):
-                    rating = sess.run(discriminator.all_logits, {discriminator.u: input_user[i]})
-                    former_user_id = input_user[i]
-                    former_user_rating = rating
-                else:
-                    rating = former_user_rating
+        with open(DIS_TRAIN_FILE)as fin:
+            for line in fin:
+                line = line.split()
+                u = int(line[0])
+                i = int(line[1])
+                j = int(line[2])
+                rating = sess.run(discriminator.all_logits, {discriminator.u: [u]})
+                o = pd.Series(rating)
+                rank_pos = int(o.rank(ascending=False)[i])
+                pos_len = len(user_pos_train[u])  # num of pos_item for u
+                delta_ndcg = TI[rank_pos-1]/TI[ITEM_NUM-1]
+                '''
+                rating = sess.run(discriminator.all_logits, {discriminator.u: [u]})
                 rating = list(rating)
                 ratings_r = copy.deepcopy(rating)
                 ratings_r.sort(reverse=True)
-                rank_pos = ratings_r.index(rating[input_item_pos[i]]) + 1
+                rank_pos = ratings_r.index(rating[i]) + 1
                 delta_dcg = 0
-                for j in range(rank_pos):
-                    delta_dcg += 1/(rank_pos+1)
+                for rank in range(rank_pos):
+                    delta_dcg += 1/(rank+1)
                 delta_ndcg = delta_dcg / TI
-                delta_ndcg_list.append(delta_ndcg * ndcg_rate)
-
-            _ = sess.run(discriminator.d_updates,
-                         feed_dict={discriminator.u: input_user, discriminator.pos: input_item_pos,
-                                    discriminator.neg: input_item_neg, discriminator.delta_ndcg: delta_ndcg_list})
+				'''
+                _ = sess.run(discriminator.d_updates,
+                             feed_dict={discriminator.u: [u], discriminator.pos: [i],
+                                        discriminator.neg: [j], discriminator.delta_ndcg: [delta_ndcg]})
 
         result = simple_test(sess, discriminator)
-        result_train = simple_train(sess, discriminator)
-        print("epoch for test: " + str(epoch), "dis: ", result)
-        print("epoch for train: " + str(epoch), "dis: ", result_train)
+        result_train = simple_train(sess,discriminator)
+        print ("epoch for test: " +  str(epoch), "dis: ", result)
+        print ("epoch for train: " +  str(epoch), "dis: ", result_train)
         if result[1] > best_p5:
             best_p5 = result[1]
             discriminator.save_model(sess, DIS_MODEL_FILE)
-            print("best P@5 for test: ", best_p5)
+            print ("best P@5 for test: ", best_p5)
             dis_log.write("best P@5 for test: " + '\t' + str(best_p5) + '\t')
 
         buf = '\t'.join([str(x) for x in result])

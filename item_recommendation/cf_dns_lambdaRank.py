@@ -4,9 +4,8 @@ import pickle
 import numpy as np
 import multiprocessing
 import os
-import copy
-import utils as ut
 import math
+import pandas as pd
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
@@ -220,61 +219,51 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
     param = None
     discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1, param=param, initdelta=0.05, learning_rate=0.1)
 
+
+    ### compute IDCG,DCG
+    DCG = [] #save dcg for each rank
+    #r = 0
+    IDCG = [] #save idcg for each user
+    idcg = 0
+    for i in range(ITEM_NUM):
+        DCG.append(1 / math.log(i + 2, 2))
+
+    for i in range(USER_NUM):
+        pos_len = len(user_pos_train[i])
+        for j in range(pos_len):
+            idcg += 1 / math.log(j + 2, 2)
+        IDCG.append(idcg)
+    ####
+
     #config = tf.ConfigProto()
     #config.gpu_options.allow_growth = True
     sess = tf.Session()
     sess.run(tf.global_variables_initializer())
 
-    dis_log = open(workdir + 'dis_log_dns_lambdaRank_2.txt', 'w')
+    dis_log = open(workdir + 'dis_log_dns_lambdaRank.txt', 'w')
     print ("dis ", simple_test(sess, discriminator))
     best_p5 = 0.
 
     # generate_uniform(DIS_TRAIN_FILE) # Uniformly sample negative examples
 
-    for epoch in range(80):
+    for epoch in range(150):
         generate_dns(sess, discriminator, DIS_TRAIN_FILE)  # dynamic negative sample  生成判别器的训练样本
-        index = 1
-        train_size = ut.file_len(DIS_TRAIN_FILE)
+        with open(DIS_TRAIN_FILE)as fin:
+            for line in fin:
+                line = line.split()
+                u = int(line[0])
+                i = int(line[1])
+                j = int(line[2])
+                rating = sess.run(discriminator.all_logits, {discriminator.u: [u]})
+                o = pd.Series(rating)
+                o.rank(ascending=False)
+                rank_pos = int(o[i])
+                rank_neg = int(o[j])
+                delta_ndcg = abs(IDCG[rank_pos-1] - IDCG[rank_neg-1]) / IDCG[u]
 
-        while True:
-            if index > train_size:
-                break
-            if index + BATCH_SIZE <= train_size + 1:
-                input_user, input_item_pos, input_item_neg = ut.get_batch_data_pairwise(DIS_TRAIN_FILE, index,
-                                                                                        BATCH_SIZE)
-            else:
-                input_user, input_item_pos, input_item_neg = ut.get_batch_data_pairwise(DIS_TRAIN_FILE, index,
-                                                                                        train_size - index + 1)
-            index += BATCH_SIZE
-
-            # delta NDCG
-            delta_ndcg_list = []
-            ndcg_rate = 1
-            former_user_id = -1
-            former_user_rating = []
-            for i in range(len(input_user)):
-                if(input_user[i] != former_user_id):
-                    rating = sess.run(discriminator.all_logits, {discriminator.u: input_user[i]})
-                    former_user_id = input_user[i]
-                    former_user_rating = rating
-                else:
-                    rating = former_user_rating
-                rating = list(rating)
-                ratings_r = copy.deepcopy(rating)
-                ratings_r.sort(reverse=True)
-                rank_pos = ratings_r.index(rating[input_item_pos[i]]) + 1
-                rank_neg = ratings_r.index(rating[input_item_neg[i]]) + 1
-                pos_len = len(user_pos_train[input_user[i]])  # num of pos_item for u
-                idcg = 0
-                for j in range(pos_len):
-                    idcg = idcg + 1 / math.log(j + 2, 2)
-                delta_dcg = abs((1 / math.log(rank_pos + 1, 2)) - (1 / math.log(rank_neg + 1, 2)))
-                delta_ndcg = delta_dcg / idcg
-                delta_ndcg_list.append(delta_ndcg * ndcg_rate)
-
-            _ = sess.run(discriminator.d_updates,
-                         feed_dict={discriminator.u: input_user, discriminator.pos: input_item_pos,
-                                    discriminator.neg: input_item_neg, discriminator.delta_ndcg: delta_ndcg_list})
+                _ = sess.run(discriminator.d_updates,
+                             feed_dict={discriminator.u: [u], discriminator.pos: [i],
+                                        discriminator.neg: [j], discriminator.delta_ndcg: [delta_ndcg]})
 
         result = simple_test(sess, discriminator)
         result_train = simple_train(sess, discriminator)
