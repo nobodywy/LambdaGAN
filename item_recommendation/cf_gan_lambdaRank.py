@@ -280,7 +280,7 @@ def main():
                         o = o.rank(ascending=False)
                         rank_pos = int(o[input_item_pos[i]])
                         rank_neg = int(o[input_item_neg[i]])
-                        delta_ndcg = abs(DCG[rank_pos - 1] - DCG[rank_neg - 1]) / IDCG[u]
+                        delta_ndcg = abs(DCG[rank_pos - 1] - DCG[rank_neg - 1]) / IDCG[input_user[i]]
                         delta_ndcg_list.append(delta_ndcg)
 
                     _ = sess.run(discriminator.d_updates,
