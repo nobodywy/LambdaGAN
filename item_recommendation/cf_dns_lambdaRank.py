@@ -34,7 +34,7 @@ with open(workdir + 'movielens-100k-train.txt')as fin:
         uid = int(line[0])
         iid = int(line[1])
         r = float(line[2])
-        if r > 0.1: #0 or 3.99
+        if r > 3.99: #0 or 3.99
             if uid in user_pos_train:
                 user_pos_train[uid].append(iid)
             else:
@@ -229,7 +229,11 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
         DCG.append(1 / math.log(i + 2, 2))
 
     for i in range(USER_NUM):
-        pos_len = len(user_pos_train[i])
+        if(i in user_pos_train):
+            pos_len = len(user_pos_train[i])
+        else:
+            IDCG.append(0)
+            continue
         for j in range(pos_len):
             idcg += (1 / math.log(j + 2, 2))
         IDCG.append(idcg)
@@ -260,7 +264,7 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
                 rank_pos = int(o[i])
                 rank_neg = int(o[j])
                 delta_ndcg = abs(DCG[rank_pos-1] - DCG[rank_neg-1]) / IDCG[u]
-                delta_ndcg = pow(1.5,delta_ndcg)
+                #delta_ndcg = pow(1.5,delta_ndcg)
 
                 _ = sess.run(discriminator.d_updates,
                              feed_dict={discriminator.u: [u], discriminator.pos: [i],

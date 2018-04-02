@@ -249,17 +249,6 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
                 #pos_len = len(user_pos_train[u])  # num of pos_item for u
                 delta_ndcg = TI[rank_pos-1]/TI[ITEM_NUM-1]
                 delta_ndcg = pow(1.5,delta_ndcg)
-                '''
-                rating = sess.run(discriminator.all_logits, {discriminator.u: [u]})
-                rating = list(rating)
-                ratings_r = copy.deepcopy(rating)
-                ratings_r.sort(reverse=True)
-                rank_pos = ratings_r.index(rating[i]) + 1
-                delta_dcg = 0
-                for rank in range(rank_pos):
-                    delta_dcg += 1/(rank+1)
-                delta_ndcg = delta_dcg / TI
-				'''
                 _ = sess.run(discriminator.d_updates,
                              feed_dict={discriminator.u: [u], discriminator.pos: [i],
                                         discriminator.neg: [j], discriminator.delta_ndcg: [delta_ndcg]})

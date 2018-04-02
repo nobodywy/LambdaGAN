@@ -7,6 +7,7 @@ import utils as ut
 import multiprocessing
 import os
 import copy
+import pandas as pd
 import math
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -209,7 +210,7 @@ def main():
     print ("load model...")
     param = pickle.load(open(workdir + "model_dns.pkl",'rb'),encoding='bytes')
     #pickle.loa
-    generator = GEN(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.0 / BATCH_SIZE, param=None, initdelta=INIT_DELTA,
+    generator = GEN(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.0 / BATCH_SIZE, param=param, initdelta=INIT_DELTA,
                     learning_rate=0.001)
     discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1 / BATCH_SIZE, param=None, initdelta=INIT_DELTA,
                         learning_rate=0.001)
@@ -224,6 +225,25 @@ def main():
 
     dis_log = open(workdir + 'dis_lambdaRank_log.txt', 'w')
     gen_log = open(workdir + 'gen_lambdaRank_log.txt', 'w')
+
+    ### compute IDCG,DCG
+    DCG = []  # save dcg for each rank
+    # r = 0
+    IDCG = []  # save idcg for each user
+    idcg = 0
+    for i in range(ITEM_NUM):
+        DCG.append(1 / math.log(i + 2, 2))
+
+    for i in range(USER_NUM):
+        if(i in user_pos_train):
+            pos_len = len(user_pos_train[i])
+        else:
+            IDCG.append(0)
+            continue
+        for j in range(pos_len):
+            idcg += (1 / math.log(j + 2, 2))
+        IDCG.append(idcg)
+    ####
 
     # minimax training
     best = 0.
@@ -256,16 +276,11 @@ def main():
                         else:
                             rating = former_user_rating
                         rating = list(rating)
-                        ratings_r = copy.deepcopy(rating)
-                        ratings_r.sort(reverse=True)
-                        rank_pos = ratings_r.index(rating[input_item_pos[i]]) + 1
-                        rank_neg = ratings_r.index(rating[input_item_neg[i]]) + 1
-                        pos_len = len(user_pos_train[input_user[i]])  #num of pos_item for u
-                        idcg = 0
-                        for j in range(pos_len):
-                            idcg = idcg +  1/math.log(j + 2, 2)
-                        delta_dcg = abs((1/math.log(rank_pos + 1,2)) - (1/math.log(rank_neg + 1,2)))
-                        delta_ndcg = delta_dcg/idcg
+                        o = pd.Series(rating)
+                        o = o.rank(ascending=False)
+                        rank_pos = int(o[input_item_pos[i]])
+                        rank_neg = int(o[input_item_neg[i]])
+                        delta_ndcg = abs(DCG[rank_pos - 1] - DCG[rank_neg - 1]) / IDCG[u]
                         delta_ndcg_list.append(delta_ndcg)
 
                     _ = sess.run(discriminator.d_updates,
@@ -303,17 +318,12 @@ def main():
                     # delta NDCG
                     delta_ndcg_list = []
                     rating = list(rating)
-                    ratings_r = copy.deepcopy(rating)
-                    ratings_r.sort(reverse=True)
+                    o = pd.Series(rating)
+                    o = o.rank(ascending=False)
                     for i in range(len(pos)):
-                        rank_pos = ratings_r.index(rating[pos[i]]) + 1
-                        rank_neg = ratings_r.index(rating[sample[i]]) + 1
-                        pos_len = len(pos)  # num of pos_item for u
-                        idcg = 0
-                        for j in range(pos_len):
-                            idcg = idcg + 1 / math.log(j + 2, 2)
-                        delta_dcg = abs((1 / math.log(rank_pos + 1, 2)) - (1 / math.log(rank_neg + 1, 2)))
-                        delta_ndcg = delta_dcg / idcg
+                        rank_pos = int(o[pos[i]])
+                        rank_neg = int(o[sample[i]])
+                        delta_ndcg = abs(DCG[rank_pos - 1] - DCG[rank_neg - 1]) / IDCG[u]
                         delta_ndcg_list.append(delta_ndcg)
 
                     ###########################################################################

@@ -4,7 +4,9 @@
     <list default="true" id="7555a30a-04ab-43be-a193-73dfe7a4a6ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/cf_dns_lambdaRank.py" afterPath="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
-      <change beforePath="$PROJECT_DIR$/ml-100k/dis-train.txt" afterPath="$PROJECT_DIR$/ml-100k/dis-train.txt" />
+      <change beforePath="$PROJECT_DIR$/cf_dns_lambdaRank_3.py" afterPath="$PROJECT_DIR$/cf_dns_lambdaRank_3.py" />
+      <change beforePath="$PROJECT_DIR$/cf_gan_lambdaRank.py" afterPath="$PROJECT_DIR$/cf_gan_lambdaRank.py" />
+      <change beforePath="$PROJECT_DIR$/dis_model_lambdaRank.py" afterPath="$PROJECT_DIR$/dis_model_lambdaRank.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,25 +19,47 @@
     <SUITE FILE_PATH="coverage/item_recommendation$cf_gan.coverage" NAME="cf_gan Coverage Results" MODIFIED="1522235612876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$test.coverage" NAME="test Coverage Results" MODIFIED="1522683570115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank_2.coverage" NAME="cf_dns_lambdaRank_2 Coverage Results" MODIFIED="1522666393744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/item_recommendation$cf_gan_lambdaRank.coverage" NAME="cf_gan_lambdaRank Coverage Results" MODIFIED="1522143771278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/item_recommendation$cf_gan_lambdaRank.coverage" NAME="cf_gan_lambdaRank Coverage Results" MODIFIED="1522689742746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_dns.coverage" NAME="cf_dns Coverage Results" MODIFIED="1522242462454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_gan_pairwise.coverage" NAME="cf_gan_pairwise Coverage Results" MODIFIED="1522562120053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank.coverage" NAME="cf_dns_lambdaRank Coverage Results" MODIFIED="1522683792436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank.coverage" NAME="cf_dns_lambdaRank Coverage Results" MODIFIED="1522689124038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+            <state relative-caret-position="494">
+              <caret line="231" column="22" lean-forward="true" selection-start-line="231" selection-start-column="22" selection-end-line="231" selection-end-column="22" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
-                <element signature="e#2505#2584#0" expanded="false" />
-                <element signature="e#2612#2732#0" expanded="false" />
-                <element signature="e#2768#3418#0" expanded="false" />
-                <element signature="e#3454#4090#0" expanded="false" />
-                <element signature="e#4126#4876#0" expanded="false" />
+                <element signature="e#1376#1642#0" expanded="false" />
+                <element signature="e#1793#2479#0" expanded="false" />
+                <element signature="e#2506#2585#0" expanded="false" />
+                <element signature="e#2613#2733#0" expanded="false" />
+                <element signature="e#2769#3419#0" expanded="false" />
+                <element signature="e#3455#4091#0" expanded="false" />
+                <element signature="e#4127#4877#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cf_gan_lambdaRank.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cf_gan_lambdaRank.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="244" column="25" lean-forward="true" selection-start-line="244" selection-start-column="25" selection-end-line="244" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#1370#1661#0" expanded="false" />
+                <element signature="e#1776#1855#0" expanded="false" />
+                <element signature="e#1883#2003#0" expanded="false" />
+                <element signature="e#2039#2699#0" expanded="false" />
+                <element signature="e#2735#3370#0" expanded="false" />
+                <element signature="e#3406#4156#0" expanded="false" />
+                <element signature="e#4217#4969#0" expanded="false" />
+                <element signature="e#5032#5773#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -45,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-test.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-115">
-              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+              <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -54,18 +78,8 @@
       <file leaf-file-name="movielens-100k-train.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-train.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="52673" column="1" lean-forward="false" selection-start-line="52673" selection-start-column="1" selection-end-line="52673" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="95">
+              <caret line="55281" column="0" lean-forward="false" selection-start-line="55281" selection-start-column="0" selection-end-line="55300" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -74,8 +88,8 @@
       <file leaf-file-name="cf_dns.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cf_dns.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+            <state relative-caret-position="304">
+              <caret line="231" column="24" lean-forward="true" selection-start-line="231" selection-start-column="24" selection-end-line="231" selection-end-column="24" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -86,8 +100,8 @@
       <file leaf-file-name="cf_dns_lambdaRank_3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="247" column="51" lean-forward="false" selection-start-line="247" selection-start-column="51" selection-end-line="247" selection-end-column="51" />
+            <state relative-caret-position="490">
+              <caret line="252" column="36" lean-forward="true" selection-start-line="252" selection-start-column="36" selection-end-line="252" selection-end-column="36" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -108,8 +122,8 @@
       <file leaf-file-name="dis_model_lambdaRank.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dis_model_lambdaRank.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1007">
-              <caret line="54" column="101" lean-forward="false" selection-start-line="54" selection-start-column="101" selection-end-line="54" selection-end-column="101" />
+            <state relative-caret-position="208">
+              <caret line="54" column="81" lean-forward="false" selection-start-line="54" selection-start-column="81" selection-end-line="54" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -145,6 +159,7 @@
       <find>sess</find>
       <find>cores</find>
       <find>TI</find>
+      <find>user_pos_train</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,16 +177,16 @@
         <option value="$PROJECT_DIR$/cf_gan.py" />
         <option value="$PROJECT_DIR$/cf_dns.py" />
         <option value="$PROJECT_DIR$/cf_dns_pairwise.py" />
-        <option value="$PROJECT_DIR$/dis_model_lambdaRank.py" />
         <option value="$PROJECT_DIR$/dis_model_pairwise.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/cf_gan_lambdaRank.py" />
         <option value="$PROJECT_DIR$/cf_gan_pairwise.py" />
         <option value="$PROJECT_DIR$/dis_model_dns_lambdaRank.py" />
         <option value="$PROJECT_DIR$/cf_dns_lambdaRank_2.py" />
-        <option value="$PROJECT_DIR$/cf_dns_lambdaRank_3.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/dis_model_lambdaRank.py" />
+        <option value="$PROJECT_DIR$/cf_gan_lambdaRank.py" />
         <option value="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
+        <option value="$PROJECT_DIR$/cf_dns_lambdaRank_3.py" />
       </list>
     </option>
   </component>
@@ -248,26 +263,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="cf_dns" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="item_recommendation" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cf_dns.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.cf_gan_lambdaRank">
     <configuration name="cf_dns_lambdaRank" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -301,6 +297,25 @@
       <module name="item_recommendation" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="E:\code\LambdaIRGAN\item_recommendation\cf_dns_lambdaRank.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="cf_gan_lambdaRank" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="item_recommendation" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cf_gan_lambdaRank.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -345,19 +360,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.cf_dns" />
-      <item index="1" class="java.lang.String" itemvalue="Python.cf_gan_pairwise" />
-      <item index="2" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank" />
-      <item index="3" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank_2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.test" />
+      <item index="0" class="java.lang.String" itemvalue="Python.cf_gan_pairwise" />
+      <item index="1" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank" />
+      <item index="2" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank_2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.test" />
+      <item index="4" class="java.lang.String" itemvalue="Python.cf_gan_lambdaRank" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank_2" />
-        <item index="3" class="java.lang.String" itemvalue="Python.cf_gan_pairwise" />
-        <item index="4" class="java.lang.String" itemvalue="Python.cf_dns" />
+        <item index="0" class="java.lang.String" itemvalue="Python.cf_gan_lambdaRank" />
+        <item index="1" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank_2" />
+        <item index="4" class="java.lang.String" itemvalue="Python.cf_gan_pairwise" />
       </list>
     </recent_temporary>
   </component>
@@ -480,7 +495,21 @@
       <option name="project" value="LOCAL" />
       <updated>1522683387597</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix error">
+      <created>1522683891240</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1522683891240</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix error">
+      <created>1522685355379</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1522685355379</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -501,7 +530,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35102925" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14072494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16471216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -579,7 +608,8 @@
     <MESSAGE value="fix ndcg &amp; lambdaFM TI" />
     <MESSAGE value="rewrite lambda with exp" />
     <MESSAGE value="fix rating error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix rating error" />
+    <MESSAGE value="fix error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -600,12 +630,26 @@
           <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="56" />
+      <option name="time" value="63" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="user_pos_train[683]" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>user_pos_train[684]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>user_pos_train[683]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>user_pos_test[442]</expression-string>
         <language-id>Python</language-id>
@@ -732,13 +776,6 @@
         <state relative-caret-position="183">
           <caret line="145" column="4" lean-forward="false" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ml-100k/model_dns_ori.pkl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="26" column="44" lean-forward="false" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -917,21 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cf_gan_lambdaRank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dis_model_lambdaRank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
-          <caret line="54" column="101" lean-forward="false" selection-start-line="54" selection-start-column="101" selection-end-line="54" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ml-100k/dis_log_dns.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -973,26 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cf_dns.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="247" column="51" lean-forward="false" selection-start-line="247" selection-start-column="51" selection-end-line="247" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1004,30 +1006,86 @@
     <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-115">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dis_model_lambdaRank.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="54" column="81" lean-forward="false" selection-start-line="54" selection-start-column="81" selection-end-line="54" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml-100k/model_dns_ori.pkl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="26" column="44" lean-forward="false" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-train.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="52673" column="1" lean-forward="false" selection-start-line="52673" selection-start-column="1" selection-end-line="52673" selection-end-column="1" />
+        <state relative-caret-position="95">
+          <caret line="55281" column="0" lean-forward="false" selection-start-line="55281" selection-start-column="0" selection-end-line="55300" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cf_dns.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="231" column="24" lean-forward="true" selection-start-line="231" selection-start-column="24" selection-end-line="231" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="252" column="36" lean-forward="true" selection-start-line="252" selection-start-column="36" selection-end-line="252" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+        <state relative-caret-position="494">
+          <caret line="231" column="22" lean-forward="true" selection-start-line="231" selection-start-column="22" selection-end-line="231" selection-end-column="22" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-            <element signature="e#2505#2584#0" expanded="false" />
-            <element signature="e#2612#2732#0" expanded="false" />
-            <element signature="e#2768#3418#0" expanded="false" />
-            <element signature="e#3454#4090#0" expanded="false" />
-            <element signature="e#4126#4876#0" expanded="false" />
+            <element signature="e#1376#1642#0" expanded="false" />
+            <element signature="e#1793#2479#0" expanded="false" />
+            <element signature="e#2506#2585#0" expanded="false" />
+            <element signature="e#2613#2733#0" expanded="false" />
+            <element signature="e#2769#3419#0" expanded="false" />
+            <element signature="e#3455#4091#0" expanded="false" />
+            <element signature="e#4127#4877#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cf_gan_lambdaRank.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="244" column="25" lean-forward="true" selection-start-line="244" selection-start-column="25" selection-end-line="244" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#1370#1661#0" expanded="false" />
+            <element signature="e#1776#1855#0" expanded="false" />
+            <element signature="e#1883#2003#0" expanded="false" />
+            <element signature="e#2039#2699#0" expanded="false" />
+            <element signature="e#2735#3370#0" expanded="false" />
+            <element signature="e#3406#4156#0" expanded="false" />
+            <element signature="e#4217#4969#0" expanded="false" />
+            <element signature="e#5032#5773#0" expanded="false" />
           </folding>
         </state>
       </provider>
