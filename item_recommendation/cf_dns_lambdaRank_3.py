@@ -5,6 +5,7 @@ import numpy as np
 import multiprocessing
 import os
 import pandas as pd
+import math
 
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -245,8 +246,8 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
                 rating = sess.run(discriminator.all_logits, {discriminator.u: [u]})
                 o = pd.Series(rating)
                 rank_pos = int(o.rank(ascending=False)[i])
-                pos_len = len(user_pos_train[u])  # num of pos_item for u
-                delta_ndcg = TI[rank_pos-1]/TI[ITEM_NUM-1]
+                #pos_len = len(user_pos_train[u])  # num of pos_item for u
+                delta_ndcg = math.exp(TI[rank_pos-1]/TI[ITEM_NUM-1])
                 '''
                 rating = sess.run(discriminator.all_logits, {discriminator.u: [u]})
                 rating = list(rating)
