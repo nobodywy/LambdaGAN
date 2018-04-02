@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7555a30a-04ab-43be-a193-73dfe7a4a6ee" name="Default" comment="rewrite lambda with exp">
+    <list default="true" id="7555a30a-04ab-43be-a193-73dfe7a4a6ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/cf_dns_lambdaRank.py" afterPath="$PROJECT_DIR$/cf_dns_lambdaRank.py" />
       <change beforePath="$PROJECT_DIR$/ml-100k/dis-train.txt" afterPath="$PROJECT_DIR$/ml-100k/dis-train.txt" />
-      <change beforePath="$PROJECT_DIR$/ml-100k/dis_log_dns_lambdaRank.txt" afterPath="$PROJECT_DIR$/ml-100k/dis_log_dns_lambdaRank.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,20 +15,20 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/item_recommendation$cf_gan.coverage" NAME="cf_gan Coverage Results" MODIFIED="1522235612876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/item_recommendation$test.coverage" NAME="test Coverage Results" MODIFIED="1522683168596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/item_recommendation$test.coverage" NAME="test Coverage Results" MODIFIED="1522683570115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank_2.coverage" NAME="cf_dns_lambdaRank_2 Coverage Results" MODIFIED="1522666393744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_gan_lambdaRank.coverage" NAME="cf_gan_lambdaRank Coverage Results" MODIFIED="1522143771278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_dns.coverage" NAME="cf_dns Coverage Results" MODIFIED="1522242462454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/item_recommendation$cf_gan_pairwise.coverage" NAME="cf_gan_pairwise Coverage Results" MODIFIED="1522562120053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank.coverage" NAME="cf_dns_lambdaRank Coverage Results" MODIFIED="1522682710594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/item_recommendation$cf_dns_lambdaRank.coverage" NAME="cf_dns_lambdaRank Coverage Results" MODIFIED="1522683792436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="cf_dns_lambdaRank.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="259" column="31" lean-forward="false" selection-start-line="259" selection-start-column="31" selection-end-line="259" selection-end-column="31" />
+            <state relative-caret-position="190">
+              <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
                 <element signature="e#2505#2584#0" expanded="false" />
@@ -38,6 +37,26 @@
                 <element signature="e#3454#4090#0" expanded="false" />
                 <element signature="e#4126#4876#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movielens-100k-test.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-test.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-115">
+              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movielens-100k-train.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-train.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="52673" column="1" lean-forward="false" selection-start-line="52673" selection-start-column="1" selection-end-line="52673" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -194,6 +213,11 @@
               <item name="item_recommendation" type="b2602c69:ProjectViewProjectNode" />
               <item name="item_recommendation" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="item_recommendation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="item_recommendation" type="462c0819:PsiDirectoryNode" />
+              <item name="ml-100k" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -329,8 +353,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank" />
+        <item index="0" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
         <item index="2" class="java.lang.String" itemvalue="Python.cf_dns_lambdaRank_2" />
         <item index="3" class="java.lang.String" itemvalue="Python.cf_gan_pairwise" />
         <item index="4" class="java.lang.String" itemvalue="Python.cf_dns" />
@@ -449,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522681954913</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix rating error">
+      <created>1522683387597</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1522683387597</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -547,7 +578,8 @@
     <MESSAGE value="add lambdaFM-w TI" />
     <MESSAGE value="fix ndcg &amp; lambdaFM TI" />
     <MESSAGE value="rewrite lambda with exp" />
-    <option name="LAST_COMMIT_MESSAGE" value="rewrite lambda with exp" />
+    <MESSAGE value="fix rating error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix rating error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -556,11 +588,6 @@
           <url>file://$PROJECT_DIR$/cf_gan.py</url>
           <line>177</line>
           <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/cf_dns_lambdaRank.py</url>
-          <line>261</line>
-          <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test.py</url>
@@ -573,7 +600,7 @@
           <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="53" />
+      <option name="time" value="56" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -705,13 +732,6 @@
         <state relative-caret-position="183">
           <caret line="145" column="4" lean-forward="false" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -855,13 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10317">
-          <caret line="543" column="9" lean-forward="false" selection-start-line="543" selection-start-column="9" selection-end-line="543" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ml-100k/gen_pairwise_log.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -970,14 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank_3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -988,10 +993,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-115">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml-100k/movielens-100k-train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="52673" column="1" lean-forward="false" selection-start-line="52673" selection-start-column="1" selection-end-line="52673" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cf_dns_lambdaRank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="259" column="31" lean-forward="false" selection-start-line="259" selection-start-column="31" selection-end-line="259" selection-end-column="31" />
+        <state relative-caret-position="190">
+          <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <element signature="e#2505#2584#0" expanded="false" />

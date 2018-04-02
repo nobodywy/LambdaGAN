@@ -259,7 +259,7 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
                 o = o.rank(ascending=False)
                 rank_pos = int(o[i])
                 rank_neg = int(o[j])
-                delta_ndcg = abs(IDCG[rank_pos-1] - IDCG[rank_neg-1]) / IDCG[u]
+                delta_ndcg = abs(DCG[rank_pos-1] - DCG[rank_neg-1]) / IDCG[u]
                 delta_ndcg = math.exp(delta_ndcg)
 
                 _ = sess.run(discriminator.d_updates,
