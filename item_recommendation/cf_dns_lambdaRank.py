@@ -256,10 +256,11 @@ def main():  #首先初始化dis_dns判别器，使用判别器生成负样本�
                 j = int(line[2])
                 rating = sess.run(discriminator.all_logits, {discriminator.u: [u]})
                 o = pd.Series(rating)
-                o.rank(ascending=False)
+                o = o.rank(ascending=False)
                 rank_pos = int(o[i])
                 rank_neg = int(o[j])
-                delta_ndcg = math.exp(abs(IDCG[rank_pos-1] - IDCG[rank_neg-1]) / IDCG[u])
+                delta_ndcg = abs(IDCG[rank_pos-1] - IDCG[rank_neg-1]) / IDCG[u]
+                delta_ndcg = math.exp(delta_ndcg)
 
                 _ = sess.run(discriminator.d_updates,
                              feed_dict={discriminator.u: [u], discriminator.pos: [i],
