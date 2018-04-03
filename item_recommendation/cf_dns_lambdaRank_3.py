@@ -215,8 +215,8 @@ def generate_uniform(filename):
 
 def main():  #首先初始化dis_dns判别器，使用判别器生成负样本作为判别器训练数据，以此更新dis_dns判别器;目的是预训练得到三个参数，bias，u v矩阵。
     np.random.seed(70)
-    #param = None
-    param = pickle.load(open(workdir + "model_dns.pkl",'rb'),encoding='bytes')
+    param = None
+    #param = pickle.load(open(workdir + "model_dns.pkl",'rb'),encoding='bytes')
     discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1, param=param, initdelta=0.05, learning_rate=0.05)
 
     config = tf.ConfigProto()

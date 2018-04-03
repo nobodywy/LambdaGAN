@@ -223,27 +223,14 @@ def main():
     print ("gen ", simple_test(sess, generator))
     print ("dis ", simple_test(sess, discriminator))
 
-    dis_log = open(workdir + 'dis_lambdaRank_v1_log.txt', 'w')
-    gen_log = open(workdir + 'gen_lambdaRank_v1_log.txt', 'w')
+    dis_log = open(workdir + 'dis_lambdaRank_v3_log.txt', 'w')
+    gen_log = open(workdir + 'gen_lambdaRank_v3_log.txt', 'w')
 
-    ### compute IDCG,DCG
-    DCG = []  # save dcg for each rank
-    # r = 0
-    IDCG = []  # save idcg for each user
-    idcg = 0
+    TI = []
+    ti = 0
     for i in range(ITEM_NUM):
-        DCG.append(1 / math.log(i + 2, 2))
-
-    for i in range(USER_NUM):
-        if(i in user_pos_train):
-            pos_len = len(user_pos_train[i])
-        else:
-            IDCG.append(0)
-            continue
-        for j in range(pos_len):
-            idcg += (1 / math.log(j + 2, 2))
-        IDCG.append(idcg)
-    ####
+        ti += 1 / (i + 1)
+        TI.append(ti)
 
     # minimax training
     best = 0.
@@ -279,9 +266,8 @@ def main():
                         o = pd.Series(rating)
                         o = o.rank(ascending=False)
                         rank_pos = int(o[input_item_pos[i]])
-                        rank_neg = int(o[input_item_neg[i]])
-                        delta_ndcg = abs(DCG[rank_pos - 1] - DCG[rank_neg - 1]) / IDCG[input_user[i]]
-                        delta_ndcg = math.pow(1.5,delta_ndcg)
+                        delta_ndcg = TI[rank_pos - 1] / TI[ITEM_NUM - 1]
+                        delta_ndcg = pow(1.5, delta_ndcg)
                         delta_ndcg_list.append(delta_ndcg)
 
                     _ = sess.run(discriminator.d_updates,
@@ -323,9 +309,8 @@ def main():
                     o = o.rank(ascending=False)
                     for i in range(len(pos)):
                         rank_pos = int(o[pos[i]])
-                        rank_neg = int(o[sample[i]])
-                        delta_ndcg = abs(DCG[rank_pos - 1] - DCG[rank_neg - 1]) / IDCG[u]
-                        delta_ndcg = math.pow(1.5, delta_ndcg)
+                        delta_ndcg = TI[rank_pos - 1] / TI[ITEM_NUM - 1]
+                        delta_ndcg = pow(1.5, delta_ndcg)
                         delta_ndcg_list.append(delta_ndcg)
 
                     ###########################################################################
@@ -356,7 +341,7 @@ def main():
                     gen_log.write('best: ' + str(epoch) + '\t' + buf + '\n')
                     gen_log.flush()
                     best = p_5
-                    generator.save_model(sess, "ml-100k/gan_generator.pkl")
+                    generator.save_model(sess, "ml-100k/gan_generator_lambdaRank.pkl")
     gen_log.close()
     dis_log.close()
 
