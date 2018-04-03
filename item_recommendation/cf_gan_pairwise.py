@@ -21,7 +21,7 @@ cores = multiprocessing.cpu_count() - 1
 EMB_DIM = 16
 USER_NUM = 943
 ITEM_NUM = 1683
-BATCH_SIZE = 512
+BATCH_SIZE = 16
 INIT_DELTA = 0.05
 
 all_items = set(range(ITEM_NUM))
@@ -208,18 +208,20 @@ def generate_for_d(sess, model, filename):  # pairwise对 
 
 def main():
     print ("load model...")
-    param = pickle.load(open(workdir + "model_dns.pkl",'rb'),encoding='bytes')
+    param = pickle.load(open(workdir + "model_dns_ori.pkl",'rb'),encoding='bytes')
     #pickle.loa
     generator = GEN(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.0 / BATCH_SIZE, param=param, initdelta=INIT_DELTA,
                     learning_rate=0.001)
     discriminator = DIS(ITEM_NUM, USER_NUM, EMB_DIM, lamda=0.1 / BATCH_SIZE, param=None, initdelta=INIT_DELTA,
                         learning_rate=0.001)
-
+    '''
     config = tf.ConfigProto(device_count={"CPU": 6},  # limit to num_cpu_core CPU usage
                             inter_op_parallelism_threads=1,
                             intra_op_parallelism_threads=8,
                             log_device_placement=True)
-    sess = tf.Session(config=config)
+    
+    '''
+    sess = tf.Session()
     sess.run(tf.global_variables_initializer())
 
     print ("gen ", simple_test(sess, generator))

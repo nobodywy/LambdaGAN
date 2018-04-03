@@ -236,7 +236,7 @@ def main():
     best = 0.
     for epoch in range(200):
         if epoch >= 0:
-            for d_epoch in range(100):
+            for d_epoch in range(4): #100
                 if d_epoch % 5 == 0:
                     generate_for_d(sess, generator, DIS_TRAIN_FILE)
                     train_size = ut.file_len(DIS_TRAIN_FILE)
@@ -273,9 +273,9 @@ def main():
                     _ = sess.run(discriminator.d_updates,
                                  feed_dict={discriminator.u: input_user, discriminator.i_pos: input_item_pos,
                                             discriminator.i_neg: input_item_neg, discriminator.delta_ndcg: delta_ndcg_list})
-
+                print('d_epoch: ',d_epoch)
             # Train G
-            for g_epoch in range(50):  # 50
+            for g_epoch in range(2):  # 50
                 for u in user_pos_train:
                     sample_lambda = 0.2
                     pos = user_pos_train[u]
