@@ -41,6 +41,7 @@ def get_batch_data_pairwise(file, index, size):
         #rating = sess.run(model.all_rating, {model.u: [u]})
         item_pos.append(int(line[1]))
         item_neg.append(int(line[2]))
+    #linecache.clearcache()
     return user, item_pos, item_neg
 
 

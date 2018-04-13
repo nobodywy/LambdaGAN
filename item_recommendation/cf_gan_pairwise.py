@@ -1,3 +1,5 @@
+import linecache
+
 import tensorflow as tf
 from dis_model_pairwise import DIS
 from gen_model_pairwise import GEN
@@ -18,10 +20,10 @@ cores = multiprocessing.cpu_count() - 1
 #########################################################################################
 # Hyper-parameters
 #########################################################################################
-EMB_DIM = 5
+EMB_DIM = 16
 USER_NUM = 943
 ITEM_NUM = 1683
-BATCH_SIZE = 16
+BATCH_SIZE = 32
 INIT_DELTA = 0.05
 
 all_items = set(range(ITEM_NUM))
@@ -181,30 +183,47 @@ def simple_train(sess, model):  # metric for train set
     ret = list(ret)
     return ret
 
-def generate_for_d(sess, model, filename):  # pairwise对 
+
+def generate_dns_for_one_user(x):
     data = []
-    for u in user_pos_train:
-        pos = user_pos_train[u]
-        pos_set = set(pos)
+    #print('current user:', x[1])
+    all_rating = x[0]
+    u = x[1]
+    pos = user_pos_train[u]
+    if(len(pos) == 0):
+        return data
+    rating = np.array(all_rating) / 0.2  # Temperature
+    exp_rating = np.exp(rating)
+    prob = exp_rating / np.sum(exp_rating)
+    neg = np.random.choice(np.arange(ITEM_NUM), size=len(pos), p=prob)
+    for i in range(len(pos)):
+        data.append(str(u) + '\t' + str(pos[i]) + '\t' + str(neg[i]))
+    return data
 
-        rating = sess.run(model.all_rating, {model.u: [u]})
-        rating = np.array(rating[0]) / 0.2  # Temperature
-        exp_rating = np.exp(rating)
-        prob = exp_rating / np.sum(exp_rating)
+def generate_for_d(sess, model, filename):
+    data = []
+    pool = multiprocessing.Pool(cores)
+    batch_size = 128
+    index = 0
+    pos_users = list(user_pos_train.keys())
+    user_pos_train_num = len(pos_users)
+    while True:
+        # print('current index for generate_dns:',index)
+        if index >= user_pos_train_num:
+            break
+        user_batch = pos_users[index:index + batch_size]
+        index += batch_size
 
-        neg_list = []
-        for i in range(len(pos)):
-            while True:
-                neg = np.random.choice(np.arange(ITEM_NUM), p=prob)
-                if neg not in pos_set:
-                    neg_list.append(neg)
-                    break
-        for i in range(len(pos)):
-            data.append(str(u) + '\t' + str(pos[i]) + '\t' + str(neg_list[i]))
+        user_batch_rating = sess.run(model.all_rating, {model.u: user_batch})
+        user_batch_rating_uid = zip(user_batch_rating, user_batch)
+        batch_result = pool.map(generate_dns_for_one_user, user_batch_rating_uid)
+        for re in batch_result:
+            for ree in re:
+                data.append(ree)
+    pool.close()
 
     with open(filename, 'w')as fout:
         fout.write('\n'.join(data))
-
 
 def main():
     print ("load model...")
@@ -237,6 +256,7 @@ def main():
             for d_epoch in range(100):
                 if d_epoch % 5 == 0:
                     generate_for_d(sess, generator, DIS_TRAIN_FILE)
+                    linecache.updatecache(DIS_TRAIN_FILE)
                     train_size = ut.file_len(DIS_TRAIN_FILE)
                 index = 1
                 while True:
